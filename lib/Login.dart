@@ -359,6 +359,15 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ],
                     ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Musiclist()),
+                        );
+                      },
+                      child: Text("Guest Login"),
+                    )
                   ],
                 ),
               ),

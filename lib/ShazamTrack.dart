@@ -525,3 +525,18 @@ class Artist {
     return data;
   }
 }
+
+class FavouritesSong {
+  final String key;
+  final String songName;
+  final String imageUrl;
+  final String title;
+  final String artist;
+
+  FavouritesSong(
+      {required this.key,
+      required this.songName,
+      required this.imageUrl,
+      required this.title,
+      required this.artist});
+}

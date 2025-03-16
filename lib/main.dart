@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:music_app/Favourite_provider.dart';
 import 'package:music_app/Login.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:music_app/MainPage.dart';
+import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 
 void main() {
@@ -9,7 +12,12 @@ void main() {
     options: DefaultFirebaseOptions
         .currentPlatform, // Use this if `firebase_options.dart` is generated
   );
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (context) => FavouriteSongsProvider())
+    ],
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -25,7 +33,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: LoginPage(),
+      home: MainHomePage(),
     );
   }
 }

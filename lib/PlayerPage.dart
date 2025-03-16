@@ -1,8 +1,13 @@
 import 'dart:convert';
+import 'dart:ffi';
 import 'package:just_audio/just_audio.dart';
 import 'package:flutter/material.dart';
+import 'package:music_app/Favourite_provider.dart';
 import 'package:music_app/ShazamTrack.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
+import './Favourite_provider.dart';
+import 'Favourite_provider.dart';
 
 class Playerpage extends StatefulWidget {
   final String Songname;
@@ -23,6 +28,8 @@ class _PlayerpageState extends State<Playerpage> {
   String? _errorMessage;
   final TextEditingController _searchController = TextEditingController();
   SongsModel? songModel;
+
+  List<FavouritesSong> FavouriteSongs = [];
 
   @override
   void initState() {
@@ -411,6 +418,9 @@ class _PlayerpageState extends State<Playerpage> {
   }
 
   Widget _buildPlayerContent() {
+    final favouriteSongsProvider = Provider.of<FavouriteSongsProvider>(context);
+    bool isFavourite = favouriteSongsProvider.favouriteSongs
+        .any((song) => song.key == songModel?.tracks?.trackHits![0].track?.key);
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -526,6 +536,13 @@ class _PlayerpageState extends State<Playerpage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
+                IconButton(
+                  icon: Icon(
+                    Icons.volume_up,
+                    color: Colors.white,
+                  ),
+                  onPressed: showVolumeSlider,
+                ),
                 // Backward Button
                 IconButton(
                   onPressed: _movebackword,
@@ -562,6 +579,31 @@ class _PlayerpageState extends State<Playerpage> {
                 IconButton(
                   onPressed: _moveforward,
                   icon: Icon(Icons.forward_10, color: Colors.white, size: 32),
+                ),
+                IconButton(
+                  onPressed: () {
+                    if (isFavourite) {
+                      favouriteSongsProvider.removeFavouriteSong(songModel!
+                          .tracks!.trackHits![0].track!.key
+                          .toString());
+                    } else {
+                      favouriteSongsProvider.addFavouriteSong(
+                        songModel!.tracks!.trackHits![0].track!.key.toString(),
+                        widget.Songname,
+                        songModel!.tracks!.trackHits![0].track!.share?.image ??
+                            "",
+                        songModel!.tracks!.trackHits![0].track!.title ??
+                            "Unknown Title",
+                        songModel!.tracks!.trackHits![0].track!.subtitle ??
+                            "Unknown Artist",
+                      );
+                    }
+                  },
+                  icon: Icon(
+                    isFavourite ? Icons.favorite : Icons.favorite_border,
+                    color: Colors.white,
+                    size: 32,
+                  ),
                 ),
               ],
             ),
