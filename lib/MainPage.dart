@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/Favourite.dart';
 import 'package:music_app/MusicList.dart';
+import 'Account_page.dart';
 
 class MainHomePage extends StatefulWidget {
   const MainHomePage({super.key});
@@ -18,39 +19,101 @@ class _MainHomePageState extends State<MainHomePage> {
     FavouriteList(),
     AccountPage()
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Main Page'),
-      ),
       body: _pages[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              color: Colors.black,
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 10,
+              offset: Offset(0, -2),
             ),
-            label: 'Home',
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search, color: Colors.black),
-            label: 'Search',
+          child: BottomNavigationBar(
+            currentIndex: _selectedIndex,
+            onTap: (index) {
+              setState(() {
+                _selectedIndex = index;
+              });
+            },
+            backgroundColor: Colors.white,
+            selectedItemColor: Color(0xFF6A11CB),
+            unselectedItemColor: Colors.grey,
+            selectedLabelStyle: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 12,
+            ),
+            unselectedLabelStyle: TextStyle(
+              fontSize: 12,
+            ),
+            type: BottomNavigationBarType.fixed,
+            elevation: 0,
+            items: <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Container(
+                  padding: EdgeInsets.all(_selectedIndex == 0 ? 8 : 0),
+                  decoration: BoxDecoration(
+                    color: _selectedIndex == 0
+                        ? Color(0xFF6A11CB).withOpacity(0.1)
+                        : Colors.transparent,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Icon(Icons.home),
+                ),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Container(
+                  padding: EdgeInsets.all(_selectedIndex == 1 ? 8 : 0),
+                  decoration: BoxDecoration(
+                    color: _selectedIndex == 1
+                        ? Color(0xFF6A11CB).withOpacity(0.1)
+                        : Colors.transparent,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Icon(Icons.search),
+                ),
+                label: 'Search',
+              ),
+              BottomNavigationBarItem(
+                icon: Container(
+                  padding: EdgeInsets.all(_selectedIndex == 2 ? 8 : 0),
+                  decoration: BoxDecoration(
+                    color: _selectedIndex == 2
+                        ? Color(0xFF6A11CB).withOpacity(0.1)
+                        : Colors.transparent,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Icon(Icons.favorite),
+                ),
+                label: 'Favourite',
+              ),
+              BottomNavigationBarItem(
+                icon: Container(
+                  padding: EdgeInsets.all(_selectedIndex == 3 ? 8 : 0),
+                  decoration: BoxDecoration(
+                    color: _selectedIndex == 3
+                        ? Color(0xFF6A11CB).withOpacity(0.1)
+                        : Colors.transparent,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Icon(Icons.face),
+                ),
+                label: 'Account',
+              ),
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite, color: Colors.black),
-            label: 'Favourite',
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.face, color: Colors.black), label: 'Account')
-        ],
+        ),
       ),
     );
   }
@@ -60,13 +123,5 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(child: Text("Home Page"));
-  }
-}
-
-// Example AccountPage (You need to create this)
-class AccountPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(child: Text("Account Page"));
   }
 }

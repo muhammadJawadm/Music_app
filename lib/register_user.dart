@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/Login.dart';
+import 'package:music_app/MainPage.dart';
 import 'package:music_app/MusicList.dart';
 import './firebase_auth_service.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -30,7 +31,7 @@ class _RegisterUserState extends State<RegisterUser> {
           backgroundColor: Colors.green,
         ));
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Musiclist()));
+            context, MaterialPageRoute(builder: (context) => MainHomePage()));
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

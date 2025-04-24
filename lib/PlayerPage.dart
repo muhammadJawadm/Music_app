@@ -309,7 +309,7 @@ class _PlayerpageState extends State<Playerpage> {
               // Custom App Bar
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -426,12 +426,12 @@ class _PlayerpageState extends State<Playerpage> {
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
           children: [
-            SizedBox(height: 20),
+            SizedBox(height: 14),
 
             // Album Art
             Container(
-              width: 280,
-              height: 280,
+              width: 240,
+              height: 210,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
@@ -453,7 +453,7 @@ class _PlayerpageState extends State<Playerpage> {
                       color: Colors.grey.shade800,
                       child: Icon(
                         Icons.music_note,
-                        size: 80,
+                        size: 40,
                         color: Colors.white,
                       ),
                     );
@@ -461,14 +461,14 @@ class _PlayerpageState extends State<Playerpage> {
                 ),
               ),
             ),
-            SizedBox(height: 40),
+            SizedBox(height: 15),
 
             // Song Info
             Text(
               '${songModel?.tracks?.trackHits?[0].track?.title ?? "Unknown Title"}',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 24,
+                fontSize: 22,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),
@@ -482,7 +482,7 @@ class _PlayerpageState extends State<Playerpage> {
                 color: Colors.white.withOpacity(0.8),
               ),
             ),
-            SizedBox(height: 40),
+            SizedBox(height: 20),
 
             // Progress Bar
             Column(
@@ -530,7 +530,7 @@ class _PlayerpageState extends State<Playerpage> {
                 ),
               ],
             ),
-            SizedBox(height: 30),
+            SizedBox(height: 15),
 
             // Playback Controls
             Row(
@@ -607,7 +607,7 @@ class _PlayerpageState extends State<Playerpage> {
                 ),
               ],
             ),
-            SizedBox(height: 40),
+            SizedBox(height: 15),
 
             // Additional Controls
             Row(
@@ -622,7 +622,7 @@ class _PlayerpageState extends State<Playerpage> {
 
                 // Speed Button
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                   decoration: BoxDecoration(
                     color: Colors.white.withOpacity(0.2),
                     borderRadius: BorderRadius.circular(20),
@@ -654,7 +654,7 @@ class _PlayerpageState extends State<Playerpage> {
                 ),
               ],
             ),
-            SizedBox(height: 30),
+            SizedBox(height: 20),
           ],
         ),
       ),

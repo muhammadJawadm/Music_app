@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:music_app/MainPage.dart';
 import 'package:music_app/MusicList.dart';
 import 'package:music_app/firebase_auth_service.dart';
 import 'package:music_app/register_user.dart';
@@ -98,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     // Logo or App Icon
                     Container(
-                      height: 100,
+                      height: 80,
                       width: 100,
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -114,23 +115,23 @@ class _LoginPageState extends State<LoginPage> {
                       child: Center(
                         child: Icon(
                           Icons.music_note,
-                          size: 60,
+                          size: 40,
                           color: Color(0xFF6A11CB),
                         ),
                       ),
                     ),
-                    SizedBox(height: 24),
+                    SizedBox(height: 16),
 
                     // App Name
                     Text(
                       "Music App",
                       style: TextStyle(
-                        fontSize: 28,
+                        fontSize: 26,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
                     ),
-                    SizedBox(height: 8),
+                    SizedBox(height: 6),
 
                     // Tagline
                     Text(
@@ -140,7 +141,7 @@ class _LoginPageState extends State<LoginPage> {
                         color: Colors.white.withOpacity(0.8),
                       ),
                     ),
-                    SizedBox(height: 32),
+                    SizedBox(height: 18),
 
                     // Form Container
                     Container(
@@ -178,7 +179,7 @@ class _LoginPageState extends State<LoginPage> {
                                   filled: true,
                                   fillColor: Colors.grey.withOpacity(0.1),
                                   contentPadding:
-                                      EdgeInsets.symmetric(vertical: 16),
+                                      EdgeInsets.symmetric(vertical: 14),
                                 ),
                                 validator: (value) {
                                   if (value!.isEmpty) {
@@ -192,7 +193,7 @@ class _LoginPageState extends State<LoginPage> {
                                   return null;
                                 },
                               ),
-                              SizedBox(height: 16),
+                              SizedBox(height: 14),
 
                               // Password Field
                               TextFormField(
@@ -224,7 +225,7 @@ class _LoginPageState extends State<LoginPage> {
                                   filled: true,
                                   fillColor: Colors.grey.withOpacity(0.1),
                                   contentPadding:
-                                      EdgeInsets.symmetric(vertical: 16),
+                                      EdgeInsets.symmetric(vertical: 14),
                                 ),
                                 validator: (value) {
                                   if (value!.isEmpty) {
@@ -233,7 +234,7 @@ class _LoginPageState extends State<LoginPage> {
                                   return null;
                                 },
                               ),
-                              SizedBox(height: 12),
+                              SizedBox(height: 10),
 
                               // Forgot Password
                               Align(
@@ -251,7 +252,7 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 24),
+                              SizedBox(height: 10),
 
                               // Login Button
                               ElevatedButton(
@@ -274,7 +275,7 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 16),
+                              SizedBox(height: 12),
 
                               // Divider
                               Row(
@@ -298,7 +299,7 @@ class _LoginPageState extends State<LoginPage> {
                                           color: Colors.grey.withOpacity(0.5))),
                                 ],
                               ),
-                              SizedBox(height: 16),
+                              SizedBox(height: 12),
 
                               // Google Sign In Button
                               ElevatedButton.icon(
@@ -328,7 +329,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 24),
+                    SizedBox(height: 18),
 
                     // Register Link
                     Row(
@@ -363,7 +364,8 @@ class _LoginPageState extends State<LoginPage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Musiclist()),
+                          MaterialPageRoute(
+                              builder: (context) => MainHomePage()),
                         );
                       },
                       child: Text("Guest Login"),
